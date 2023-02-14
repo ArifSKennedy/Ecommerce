@@ -107,6 +107,11 @@
                         <div data-i18n="history">Supply</div>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="/admin/payment" class="menu-link">
+                        <div data-i18n="history">payment</div>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>

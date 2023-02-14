@@ -19,9 +19,18 @@ class ShopController extends Controller
      
     public function product(Request $request)
     {
-        $product = Product::all();
-        $images = Image::all();
-        $categorys = Category::all();
-        return view('frontend.product', compact('product','images','categorys'));
+        // $product = Product::all();
+        // $images = Image::all();
+        // $categorys = Category::all();
+        // return view('frontend.product', compact('product','images','categorys'));
+
+        $product = Product::with('category','image')->get();
+        return view('frontend.product', compact('product'));
+
+    }
+
+    public function detailproduct(Product $product, Image $images)
+    {
+        return view('frontend.detailproduct', compact('product','images'));
     }
 }

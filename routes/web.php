@@ -9,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 
 /*
@@ -39,7 +40,7 @@ Route::prefix('admin')->middleware(['auth', 'Admin'])->group(function () {
     Route::resource('/cart', CartController::class);
     Route::resource('/user', UserController::class);
     Route::resource('/riwayat', RiwayatController::class);
-    
+    Route::resource('/payment', PaymentController::class);
     Route::get('getSub_category/{id}', [SubCategoryController::class, 'getSubCategory']);
 
     
@@ -48,17 +49,20 @@ Route::prefix('admin')->middleware(['auth', 'Admin'])->group(function () {
 });
 
   
+
 Auth::routes();
 Route::get('/shop' , [ShopController::class, 'index']);
 Route::get('/product' , [ShopController::class, 'product']);
+Route::get('/detail/{product}', [ShopController::class, 'detailproduct']);
+
+Route::get('/keranjang', function () {
+    return view('frontend.cart');
+});
 
 Route::get('/main', function () {
     return view('main');
 });
 
-// Route::get('/product', function () {
-//     return view('frontend.product');
-// });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

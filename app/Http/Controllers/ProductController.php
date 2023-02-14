@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Product;
 use App\Models\Cart;
+use Str;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -57,6 +58,7 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->sub_category_id = $request->sub_category_id;
         $product->nama_produk = $request->nama_produk;
+        $product->slug = Str::slug($request->nama_produk, '-');
         $product->harga = $request->harga;
         $product->stok = $request->stok;
         $product->deskripsi = $request->deskripsi;
@@ -128,6 +130,7 @@ class ProductController extends Controller
         $product->category_id = $product->category_id;
         $product->sub_category_id = $request->sub_category_id;
         $product->nama_produk = $request->nama_produk;
+        $product->slug = Str::slug($request->nama_produk, '-');
         $product->harga = $request->harga;
         $product->stok = $request->stok;
         $product->deskripsi = $request->deskripsi;

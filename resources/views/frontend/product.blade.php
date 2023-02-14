@@ -25,10 +25,12 @@
                                 <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
-                        <img src="{{ asset($data->image[0]->gambar_produk) }}" alt="{{ $data->id }}">
+                        <a href="/detail/{{ $data->slug }}">
+                            <img src="{{ asset($data->image[0]->gambar_produk) }}" alt="{{ $data->slug }}">
+                        </a>
                     </div>
                     <div class="down-content">
-                        <h4>Classic Spring</h4>
+                        <h4>{{ $data->nama_produk }}</h4>
                         <h5>{{ $data->category->name }}</h5>
                         <span>Rp. {{ number_format($data->harga, 0, '.', '.') }}</span>
                         <ul class="stars">

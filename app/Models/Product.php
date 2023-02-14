@@ -40,4 +40,8 @@ class Product extends Model
     {
         return $this->hasMany(Riwayat::class);
     }
+
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 }
